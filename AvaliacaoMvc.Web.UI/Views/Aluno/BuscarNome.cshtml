@@ -1,0 +1,43 @@
+﻿@model List<AlunoModel>
+
+<h2>Dados Por Id</h2>
+
+
+<form asp-controller="Aluno" asp-action="BuscarNome" method="get">
+    <label>Nome</label>
+    <input type="text" name="Nome" />
+    <button type="submit">Buscar</button>
+</form>
+
+<table border="1" cellpadding="8" cellspacing="0" class="table">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Peso</th>
+            <th>Altura</th>
+            <th>Data de Nascimento</th>
+            <th>Idade</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @if(Model != null)
+        {
+
+        @foreach(var item in Model)
+        {
+            
+        
+                <tr>
+                    <td>@item.Nome</td>
+                    <td>@item.Peso</td>
+                    <td>@item.Altura</td>
+                    <td>@item.DataNascimento.ToString("dd/MM/yyyy")</td>
+                    <td>@item.idade</td>
+                </tr>
+            
+        }
+        }
+    </tbody>
+
+</table>

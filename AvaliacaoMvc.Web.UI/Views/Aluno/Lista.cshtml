@@ -1,0 +1,41 @@
+﻿@model List<AlunoModel>
+
+@{
+    var listaAlunos = ViewBag.ListaAlunos;
+}
+
+
+<h1>Lista de Alunos</h1>
+
+
+
+<table border="1" cellpadding="8" cellspacing="0" class="table">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Peso</th>
+            <th>Altura</th>
+            <th>Data de Nascimento</th>
+            <th>Idade</th>
+        </tr>
+    </thead>
+  <tbody>
+      
+
+    @if(listaAlunos != null)
+    {
+
+        @foreach (var aluno in listaAlunos)
+        {
+            <tr>
+                <td>@aluno.Nome</td>
+                <td>@aluno.Peso</td>
+                <td>@aluno.Altura</td>
+                <td>@aluno.DataNascimento.ToString("dd/MM/yyyy")</td>
+                <td>@aluno.idade</td>
+            </tr>
+        }
+     }
+  </tbody>
+ 
+</table>

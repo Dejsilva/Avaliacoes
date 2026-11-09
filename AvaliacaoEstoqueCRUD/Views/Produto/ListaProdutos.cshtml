@@ -1,0 +1,62 @@
+﻿@model List<AvaliacaoEstoqueCRUD.Repository.ProdutoRepository>
+
+
+<h1>ListaProdutos</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+               id
+            </th>
+            <th>
+               Nome
+            </th>
+            <th>
+               Preço
+            </th>
+            <th>
+               Quantidade
+            </th>
+            <th>
+              categoria
+            </th>
+            <th>
+                Contador edições
+            </th>
+     
+           
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @item.id
+            </td>
+            <td>
+                @item.nome
+            </td>
+            <td>
+                @item.preco
+            </td>
+            <td>
+                @item.quantidade
+            </td>
+            <td>
+                @item.categoria
+            </td>
+            <td>
+                @item.contadorEdit
+            </td>
+    
+        </tr>
+}
+
+        <h1> Contador operações</h1>
+        <h2> @Context.Session.GetInt32("Contador")</h2>
+    </tbody>
+</table>

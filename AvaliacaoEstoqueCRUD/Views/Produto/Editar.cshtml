@@ -1,0 +1,67 @@
+﻿@model AvaliacaoEstoqueCRUD.Repository.ProdutoRepository
+
+
+
+<h1>Editar</h1>
+
+<h4>ProdutoRepository</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-controller="Produto" asp-action="Editar" method="get">
+            <div class="form-group mb-3">
+                <label>Digite o ID do produto:</label>
+                <input type="number" name="id" class="form-control" />
+                <button type="submit" class="btn btn-secondary mt-2">Buscar</button>
+            </div>
+        </form>
+
+          @if (Model != null)
+            {
+        <form asp-controller="Produto" asp-action="Editar" method="post">
+
+            <div>
+                <label asp-for="id" class="control-label"></label>
+                <input asp-for="id" class="form-control"  readonly/>
+                <span asp-validation-for="id" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="nome" class="control-label"></label>
+                <input asp-for="nome" class="form-control" />
+                <span asp-validation-for="nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="preco" class="control-label"></label>
+                <input asp-for="preco" class="form-control" />
+                <span asp-validation-for="preco" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="quantidade" class="control-label"></label>
+                <input asp-for="quantidade" class="form-control" />
+                <span asp-validation-for="quantidade" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="categoria" class="control-label"></label>
+                <input asp-for="categoria" class="form-control" />
+                <span asp-validation-for="categoria" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+
+          
+
+                @if (Model.nome != null && Model.preco != null && Model.quantidade != null && Model.categoria != null)
+                {
+                    @ViewBag.Editado
+                }  
+
+        </form>
+        }
+    </div>
+</div>
+
+
+
+
