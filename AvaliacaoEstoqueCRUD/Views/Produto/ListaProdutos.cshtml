@@ -1,58 +1,68 @@
 ﻿@model List<AvaliacaoEstoqueCRUD.Repository.ProdutoRepository>
 
+@{
+    var produtos = ViewBag.MeusProdutos as List<AvaliacaoEstoqueCRUD.Repository.ProdutoRepository>;
+}
 
 <h1>ListaProdutos</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
 <table class="table">
     <thead>
         <tr>
             <th>
-               id
+                id
             </th>
             <th>
-               Nome
+                Nome
             </th>
             <th>
-               Preço
+                Preço
             </th>
             <th>
-               Quantidade
+                Quantidade
             </th>
             <th>
-              categoria
+                categoria
             </th>
             <th>
                 Contador edições
             </th>
-     
-           
+
+
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @item.id
-            </td>
-            <td>
-                @item.nome
-            </td>
-            <td>
-                @item.preco
-            </td>
-            <td>
-                @item.quantidade
-            </td>
-            <td>
-                @item.categoria
-            </td>
-            <td>
-                @item.contadorEdit
-            </td>
-    
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @item.id
+                </td>
+                <td>
+                    @item.nome
+                </td>
+                <td>
+                    @item.preco
+                </td>
+                <td>
+                    @item.quantidade
+                </td>
+                <td>
+                    @item.categoria
+                </td>
+
+                <td>
+                    @if (produtos != null) {
+
+                        @foreach (var produtoedi in produtos)
+                        {
+                            if (item.id.Equals(produtoedi.id))
+                            {
+                                @produtoedi.contadorEdit;
+                            }
+                        }
+                    }
+                </td>
         </tr>
 }
 

@@ -19,7 +19,7 @@ namespace AvaliacaoEstoqueCRUD.Repository
         public int quantidade { get; set; }
         public string categoria { get; set; }
 
-        public int contadorEdit { get; set; } 
+        public  int  contadorEdit { get; set; } 
 
 
         public void Cadastrar(ProdutoRepository objProduto)
@@ -66,7 +66,8 @@ namespace AvaliacaoEstoqueCRUD.Repository
                     nome = reader["nome"].ToString(),
                     preco = Convert.ToDecimal(reader["preco"]),
                     quantidade = Convert.ToInt32(reader["quantidade"]),
-                    categoria = reader["categoria"].ToString()
+                    categoria = reader["categoria"].ToString(),
+                    
                 });
 
             }

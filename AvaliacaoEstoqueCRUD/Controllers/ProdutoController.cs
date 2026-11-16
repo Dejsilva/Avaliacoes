@@ -1,6 +1,8 @@
 ﻿using AvaliacaoEstoqueCRUD.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel;
+using System.Text.Json;
 
 namespace AvaliacaoEstoqueCRUD.Controllers
 {
@@ -54,6 +56,8 @@ namespace AvaliacaoEstoqueCRUD.Controllers
 
             HttpContext.Session.GetInt32("Contador");
 
+
+
             return View(produtos);
         }
 
@@ -96,16 +100,30 @@ namespace AvaliacaoEstoqueCRUD.Controllers
             }
 
             ProdutoRepository pro =  produtos.Find(x => x.id == produtoEdit.id);
-            
-            pro.contadorEdit++;
 
-            
-            
-            HttpContext.Session.SetInt32("ContadorEd", pro.contadorEdit);
-             
-            
-  
+            int ? contadorIndividual = HttpContext.Session.GetInt32("ContadorIndividual");
+
+            if (pro.contadorEdit.Equals(0) && contadorIndividual.Equals(0))
+            {
+                pro.contadorEdit++;
+                HttpContext.Session.SetInt32("ContadorIndividual", pro.contadorEdit);
+            }
+            else
+            {
+                pro.contadorEdit++;
+                HttpContext.Session.SetInt32("ContadorIndividual", pro.contadorEdit);
+            }
+
+            List<ProdutoRepository> produtosEdtitados = new List<ProdutoRepository>();
+
+            produtosEdtitados.Add(pro);
+
+            ViewBag.MeusProdutos = produtosEdtitados;
+
+
             return View(produtoEdit);
         }
+
+
     }
 }
